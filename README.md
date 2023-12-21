@@ -8,7 +8,7 @@ This C++ library helps us in printing boxes or matrices in a terminal, based on 
 - [ ] Currently, we are printing matrices and not boxes :p
 - [ ] Add Glitters
 - [ ] Print values inside cells
-- [ ] Return box/matrix as string
+- [x] Return box/matrix as string
 
 ## Run
 <sup>still in development</sup>

@@ -2,9 +2,9 @@
  * @file: Box.cpp
  */
 
+#include <sstream>
 #include "Box.h"
 #include "Pen.h"
-
 
 /*
  * FIXME: We have made it global for now,
@@ -122,4 +122,17 @@ Box::draw (void)
 
     draw_row_padding();
   }
+}
+
+std::string
+Box::sketch (void)
+{
+  std::ostringstream buffer;
+  std::streambuf *old_cout_buffer = std::cout.rdbuf (buffer.rdbuf());
+
+  draw();
+
+  std::cout.rdbuf (old_cout_buffer);
+
+  return buffer.str();
 }

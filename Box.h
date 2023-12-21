@@ -30,6 +30,11 @@ class Box {
                bool arc_boundaries = false);
     void draw (void);
 
+    /*
+     * Returns the drawing in the form of string
+     */
+    std::string sketch (void);
+
   private:
     void draw_row         (int);
     void draw_row_padding (void);
