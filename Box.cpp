@@ -17,6 +17,8 @@
 #define INT_PADDING(level) (static_cast<int>(level) \
                               * PADDING_GAP)
 
+#define N_ROW_PADDING(level) (static_cast<int>(level) - 1)
+
 Box::Box (int rows = 1, int cols = 1)
 {
   n_rows = rows;
@@ -80,15 +82,26 @@ Box::draw_row (int row_no)
 
     draw_col_padding();
   }
+  Pen::stop();
 }
 
 void
 Box::draw_row_padding (void)
 {
-  for (int i = 0; i <= n_cols; i++) {
-    Pen::draw (unicode.line_vertical());
-    Pen::lift (INT_PADDING (padding_level));
+  for (int i = 0; i < N_ROW_PADDING (padding_level); i++) {
+    for (int j = 0; j <= n_cols; j++) {
+      Pen::draw (unicode.line_vertical());
+      Pen::lift (INT_PADDING (padding_level));
+    }
+
+    if (i == N_ROW_PADDING (padding_level) - 1)
+      break;
+
+    Pen::stop();
   }
+
+  if (N_ROW_PADDING (padding_level) > 0)
+    Pen::stop();
 }
 
 void
@@ -96,12 +109,10 @@ Box::draw (void)
 {
   for (int i = 0; i <= n_rows; i++) {
     draw_row(i);
-    Pen::stop();
 
     if (i == n_rows)
       break;
 
     draw_row_padding();
-    Pen::stop();
   }
 }
