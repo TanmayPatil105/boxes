@@ -26,6 +26,7 @@ class Box {
   Box(int, int);
   Box(int, int, PaddingLevel);
   void draw();
+ private:
   void draw_row(int);
   void draw_row_padding();
   void draw_coord(int, int);
