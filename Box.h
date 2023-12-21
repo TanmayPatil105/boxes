@@ -5,10 +5,10 @@
 #pragma once
 
 #include <iostream>
-
 #include "Box-unicode.h"
 
-typedef enum {
+typedef enum
+{
   PADDING_LEVEL_NONE = 0,
   PADDING_LEVEL_SMALL,
   PADDING_LEVEL_NORMAL,
@@ -16,19 +16,19 @@ typedef enum {
 } PaddingLevel;
 
 class Box {
- private:
-  int n_rows;
-  int n_cols;
-  PaddingLevel padding_level;
-  BoxUnicode unicode;
+  private:
+    int n_rows;
+    int n_cols;
+    PaddingLevel padding_level;
+    BoxUnicode unicode;
 
- public:
-  Box(int, int);
-  Box(int, int, PaddingLevel);
-  void draw();
- private:
-  void draw_row(int);
-  void draw_row_padding();
-  void draw_coord(int, int);
-  void draw_col_padding();
+  public:
+    Box       (int, int);
+    Box       (int, int, PaddingLevel);
+    void draw (void);
+  private:
+    void draw_row         (int);
+    void draw_row_padding (void);
+    void draw_coord       (int, int);
+    void draw_col_padding (void);
 };

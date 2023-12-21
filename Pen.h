@@ -7,8 +7,8 @@
 #include <string>
 
 class Pen {
- public:
-  static void draw(std::string text);
-  static void stop(void);
-  static void lift (int gaps);
+  public:
+    static void draw (std::string text);
+    static void stop (void);
+    static void lift (int gaps);
 };
