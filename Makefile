@@ -2,7 +2,6 @@ SRCS = Box.cpp Pen.cpp main.cpp
 
 CC = g++
 CFLAGS = -Wall -Werror
-FORMATTER = clang-format -i
 
 all: draw
 
@@ -17,9 +16,6 @@ main.o: main.cpp Box.h Box-unicode.h
 
 draw: main.o Box.o Pen.o
 	 ${CC} ${CFLAGS} Box.o main.o Pen.o -o draw
-
-format:
-	${FORMATTER} ${SRCS} *.h
 
 clean:
 	rm -rf *.o draw
