@@ -3,6 +3,10 @@ SRCS = Box.cpp Pen.cpp main.cpp
 CC = g++
 CFLAGS = -Wall -Werror
 
+ifdef DEBUG
+CFLAGS += -g
+endif
+
 all: draw
 
 Pen.o: Pen.cpp Pen.h
