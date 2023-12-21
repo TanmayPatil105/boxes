@@ -6,6 +6,10 @@
 
 #include "Pen.h"
 
+#define PADDING_GAP 3
+
+#define INT_PADDING(level) (static_cast<int>(level) * PADDING_GAP)
+
 Box::Box(int rows = 1, int cols = 1) {
   n_rows = rows;
   n_cols = cols;
@@ -19,7 +23,7 @@ Box::Box(int rows = 1, int cols = 1, PaddingLevel padding = PADDING_LEVEL_SMALL)
 }
 
 void Box::draw_col_padding() {
-  for (int level = 0; level < 3 * padding_level; level++) {
+  for (int level = 0; level < INT_PADDING (padding_level); level++) {
     Pen::draw(unicode.line_horizontal());
   }
 }
@@ -62,13 +66,10 @@ void Box::draw_row(int row_no) {
   }
 }
 
-static std::string calc_gaps(int pads) {
-  return std::string(3 * pads, ' ');
-}
-
 void Box::draw_row_padding() {
   for (int i = 0; i <= n_cols; i++) {
-    Pen::draw(unicode.line_vertical() + calc_gaps(static_cast<int>(padding_level)));
+    Pen::draw(unicode.line_vertical());
+    Pen::lift(INT_PADDING (padding_level));
   }
 }
 
