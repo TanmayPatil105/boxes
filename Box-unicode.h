@@ -8,17 +8,25 @@
 
 class BoxUnicode {
   private:
-    std::string _top_left = "┌";
-    std::string _top_right = "┐";
-    std::string _intersect_left = "├";
-    std::string _intersect_top = "┬";
-    std::string _intersect_right = "┤";
+    std::string _top_left         = "┌";
+    std::string _top_right        = "┐";
+    std::string _intersect_left   = "├";
+    std::string _intersect_top    = "┬";
+    std::string _intersect_right  = "┤";
     std::string _intersect_bottom = "┴";
     std::string _intersect_middle = "┼";
-    std::string _bottom_left = "└";
-    std::string _bottom_right = "┘";
-    std::string _line_horizontal = "─";
-    std::string _line_vertical = "│";
+    std::string _bottom_left      = "└";
+    std::string _bottom_right     = "┘";
+    std::string _line_horizontal  = "─";
+    std::string _line_vertical    = "│";
+
+    /*
+     * arc boundaries
+     */
+    std::string _arc_top_left     = "╭";
+    std::string _arc_top_right    = "╮";
+    std::string _arc_bottom_left  = "╰";
+    std::string _arc_bottom_right = "╯";
 
   public:
     std::string top_left() {
@@ -63,5 +71,21 @@ class BoxUnicode {
 
     std::string line_vertical() {
       return _line_vertical;
+    }
+
+    std::string arc_top_left() {
+      return _arc_top_left;
+    }
+
+    std::string arc_top_right() {
+      return _arc_top_right;
+    }
+
+    std::string arc_bottom_left() {
+      return _arc_bottom_left;
+    }
+
+    std::string arc_bottom_right() {
+      return _arc_bottom_right;
     }
 };

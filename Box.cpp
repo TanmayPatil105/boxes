@@ -19,18 +19,13 @@
 
 #define N_ROW_PADDING(level) (static_cast<int>(level) - 1)
 
-Box::Box (int rows = 1, int cols = 1)
-{
-  n_rows = rows;
-  n_cols = cols;
-  padding_level = PADDING_LEVEL_SMALL;
-}
 
-Box::Box (int rows = 1, int cols = 1, PaddingLevel padding = PADDING_LEVEL_SMALL)
+Box::Box (int rows = 1, int cols = 1, PaddingLevel padding, bool arc_bdrs)
 {
   n_rows = rows;
   n_cols = cols;
   padding_level = padding;
+  arc_boundaries = arc_bdrs;
 }
 
 void
@@ -46,17 +41,29 @@ Box::draw_coord (int row_no, int col_no)
 {
   if (col_no == 0) {
     if (row_no == 0) {
-      Pen::draw (unicode.top_left());
+      if (arc_boundaries == true)
+        Pen::draw (unicode.arc_top_left());
+      else
+        Pen::draw (unicode.top_left());
     } else if (row_no == n_rows) {
-      Pen::draw (unicode.bottom_left());
+      if (arc_boundaries == true)
+        Pen::draw (unicode.arc_bottom_left());
+      else
+        Pen::draw (unicode.bottom_left());
     } else {
       Pen::draw (unicode.intersect_left());
     }
   } else if (col_no == n_cols) {
     if (row_no == 0) {
-      Pen::draw (unicode.top_right());
+      if (arc_boundaries == true)
+        Pen::draw (unicode.arc_top_right());
+      else
+        Pen::draw (unicode.top_right());
     } else if (row_no == n_rows) {
-      Pen::draw (unicode.bottom_right());
+      if (arc_boundaries == true)
+        Pen::draw (unicode.arc_bottom_right());
+      else
+        Pen::draw (unicode.bottom_right());
     } else {
       Pen::draw (unicode.intersect_right());
     }

@@ -5,6 +5,7 @@
 #pragma once
 
 #include <iostream>
+#include <cstdbool>
 #include "Box-unicode.h"
 
 typedef enum
@@ -17,15 +18,18 @@ typedef enum
 
 class Box {
   private:
-    int n_rows;
-    int n_cols;
+    int          n_rows;
+    int          n_cols;
     PaddingLevel padding_level;
-    BoxUnicode unicode;
+    BoxUnicode   unicode;
+    bool         arc_boundaries;
 
   public:
-    Box       (int, int);
-    Box       (int, int, PaddingLevel);
+    Box       (int, int,
+               PaddingLevel level  = PADDING_LEVEL_SMALL,
+               bool arc_boundaries = false);
     void draw (void);
+
   private:
     void draw_row         (int);
     void draw_row_padding (void);

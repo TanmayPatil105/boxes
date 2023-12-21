@@ -29,9 +29,9 @@ test_padding_small (void)
 void
 test_padding_normal (void)
 {
-  std::cout << "NORMAL:" << std::endl;
+  std::cout << "NORMAL + ARC BOUNDARIES:" << std::endl;
 
-  Box box = Box(3, 3, PADDING_LEVEL_NORMAL);
+  Box box = Box(3, 3, PADDING_LEVEL_NORMAL, true);
 
   box.draw();
 }
